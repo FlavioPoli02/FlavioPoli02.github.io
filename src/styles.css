@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Tema scuro (default) */
+  --bg:          #0A0A0F;
+  --surface:     #111118;
+  --surface-2:   #18181F;
+  --accent:      #4F7EFF;
+  --accent-glow: rgba(79, 126, 255, 0.12);
+  --hero-glow:   rgba(79, 126, 255, 0.14);
+  --text-1:      #EEEEF5;
+  --text-2:      #8A8AA8;
+  --text-3:      #4A4A62;
+  --border:      rgba(255, 255, 255, 0.07);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --max-w:       1100px;
+  --section-pad: 6rem 1.5rem;
+}
+
+[data-theme="light"] {
+  --bg:          #F4F4F8;
+  --surface:     #FFFFFF;
+  --surface-2:   #EAEAF0;
+  --accent:      #3060E0;
+  --accent-glow: rgba(48, 96, 224, 0.1);
+  --hero-glow:   rgba(48, 96, 224, 0.09);
+  --text-1:      #0A0A14;
+  --text-2:      #4A4A6A;
+  --text-3:      #9090AA;
+  --border:      rgba(0, 0, 0, 0.08);
+}
+
+/* Transizione fluida solo durante il cambio tema */
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition:
+    background-color 0.35s ease,
+    color            0.35s ease,
+    border-color     0.35s ease !important;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: white; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--text-3); border-radius: 3px; }

@@ -1,0 +1,23 @@
+<nav [class.scrolled]="scrolled">
+  <div class="nav-inner">
+    <span class="logo" (click)="scrollTo('home')">FlavioPoli</span>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><button (click)="scrollTo('about')">About</button></li>
+        <li><button (click)="scrollTo('skills')">Skills</button></li>
+        <li><button (click)="scrollTo('experience')">Esperienza</button></li>
+        <li><button (click)="scrollTo('contact')" class="cta-nav">Contattami</button></li>
+      </ul>
+      <button
+        class="theme-toggle"
+        (click)="theme.toggle()"
+        [title]="theme.isDark() ? 'Passa al tema chiaro' : 'Passa al tema scuro'"
+        [attr.aria-label]="theme.isDark() ? 'Attiva tema chiaro' : 'Attiva tema scuro'"
+      >
+        <span class="icon-sun">☀</span>
+        <span class="icon-moon">☾</span>
+        <span class="toggle-thumb" [class.light]="!theme.isDark()"></span>
+      </button>
+    </div>
+  </div>
+</nav>

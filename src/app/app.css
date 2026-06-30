@@ -1,18 +1,1 @@
-.wip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-family: sans-serif;
-  color: #333;
-}
-
-.wip h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.wip p {
-  color: #666;
-}
+main { width: 100%; }

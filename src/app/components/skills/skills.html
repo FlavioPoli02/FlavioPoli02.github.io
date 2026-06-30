@@ -1,0 +1,21 @@
+<section id="skills">
+  <div class="inner">
+    <span class="eyebrow mono accent">/ skills</span>
+    <h2>Tecnologie</h2>
+    <div class="grid">
+      @for (cat of categories; track cat) {
+        <div class="group">
+          <span class="cat-label">{{ cat }}</span>
+          <div class="list">
+            @for (skill of byCategory(cat); track skill.name) {
+              <div class="card">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-level">{{ skill.level }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
