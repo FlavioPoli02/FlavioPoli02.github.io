@@ -11,6 +11,7 @@ import { ThemeService } from '../../theme.service';
 })
 export class Navbar {
   scrolled = false;
+  menuOpen = false;
 
   constructor(public theme: ThemeService) {}
 
@@ -21,5 +22,10 @@ export class Navbar {
 
   scrollTo(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    this.menuOpen = false;
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }
