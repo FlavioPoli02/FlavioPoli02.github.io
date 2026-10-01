@@ -1,10 +1,16 @@
-:host section { border-top: 1px solid var(--border); }
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8); }
-.col-title { font: 400 0.8125rem var(--font-mono); color: var(--text-3); letter-spacing: 0; padding-bottom: var(--s-1); border-bottom: 1px solid var(--border); }
-ol { list-style: none; }
-li { padding: var(--s-3) 0; border-bottom: 1px solid var(--border); }
-.period { font: 400 0.8125rem var(--font-mono); color: var(--text-3); }
-h4 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 0.25rem; }
-.org { color: var(--text-2); }
-.desc { margin-top: 0.5rem; color: var(--text-2); max-width: 52ch; }
-@media (max-width: 800px) { .cols { grid-template-columns: 1fr; gap: var(--s-6); } }
+.jobs { border-top: 1px solid var(--border-hover); }
+.job { display: grid; grid-template-columns: minmax(9rem, 1fr) 3fr; gap: var(--s-4); align-items: center; padding: var(--s-4) 0; border-bottom: 1px solid var(--border); }
+.year { font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 600; letter-spacing: -0.07em; line-height: 0.9; color: transparent; -webkit-text-stroke: 1.5px var(--text-1); transition: color 0.35s var(--ease); }
+.job:hover .year { color: var(--text-1); }
+.kind, .period { font: 500 0.8125rem var(--font-mono); color: var(--text-3); }
+.info h3 { margin-top: 0.25rem; font-size: clamp(1.5rem, 3vw, 2.25rem); letter-spacing: -0.04em; }
+.org { font-weight: 500; }
+.desc { margin-top: var(--s-1); color: var(--text-2); max-width: 56ch; }
+
+.edu-h { margin: var(--s-8) 0 var(--s-2); font: 500 0.8125rem var(--font-mono); letter-spacing: 0; color: var(--text-3); }
+.edu { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.edu li { display: flex; flex-direction: column; gap: 0.25rem; padding: var(--s-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-1); }
+.edu .t { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.25; }
+.edu .org { font-weight: 400; color: var(--text-2); }
+
+@media (max-width: 720px) { .job { grid-template-columns: 1fr; gap: var(--s-1); } .year { display: none; } .edu { grid-template-columns: 1fr; } }

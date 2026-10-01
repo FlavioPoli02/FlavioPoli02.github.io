@@ -1,25 +1,43 @@
 <section id="projects" aria-labelledby="projects-title">
   <div class="inner">
-    <span class="eyebrow">02 — Progetti in evidenza</span>
-    <h2 id="projects-title">Cosa ho costruito</h2>
-    <ul class="list">
-      @for (p of projects; track p.title) {
-        <li class="card" appReveal>
-          <div class="head">
-            <span class="period">{{ p.period }}</span>
-            <span class="ctx">{{ p.context }}</span>
-          </div>
-          <h3>{{ p.title }}</h3>
-          <p class="role">{{ p.role }}</p>
-          <p class="desc">{{ p.description }}</p>
-          @if (p.outcome) { <p class="outcome"><strong>Risultato:</strong> {{ p.outcome }}</p> }
-          <!-- TODO: aggiungere screenshot, risultato misurabile e link (demo/repo) quando disponibili. -->
-          <ul class="tags" aria-label="Tecnologie">
-            @for (t of p.tech; track t) { <li>{{ t }}</li> }
-          </ul>
-          @if (p.link) { <a class="link" [href]="p.link.href" target="_blank" rel="noopener">{{ p.link.label }} →</a> }
+    <span class="eyebrow">02 / Progetti in evidenza</span>
+    <h2 id="projects-title">Cosa ho <span class="accent">costruito</span><sup>({{ projects.length }})</sup></h2>
+
+    <ul class="bento">
+      @for (p of projects; track p.title; let i = $index) {
+        <li class="slot" [class.wide]="i === 0" appReveal [revealDelay]="i * 90">
+          <article class="card">
+            <div class="body">
+              <header>
+                <span class="num" aria-hidden="true">0{{ i + 1 }}</span>
+                <span class="period">{{ p.period }}</span>
+              </header>
+              <h3>{{ p.title }}</h3>
+              <p class="role">{{ p.role }} · {{ p.context }}</p>
+              <p class="desc">{{ p.description }}</p>
+              @if (p.outcome) { <p class="outcome"><strong>Risultato:</strong> {{ p.outcome }}</p> }
+              <!-- TODO: aggiungere screenshot, risultato misurabile e link (demo/repo) quando disponibili. -->
+              @if (p.link) { <a class="link" [href]="p.link.href" target="_blank" rel="noopener">{{ p.link.label }} →</a> }
+            </div>
+            <ol class="stack" aria-label="Anatomia del progetto">
+              @for (l of p.layers; track l.label) {
+                <li>
+                  <span class="lbl">{{ l.label }}</span>
+                  <ul class="tags">@for (t of l.items; track t) { <li>{{ t }}</li> }</ul>
+                </li>
+              }
+            </ol>
+          </article>
         </li>
       }
+      <li class="slot gh" appReveal [revealDelay]="180">
+        <!-- TODO: quando ci sono altri progetti reali, aggiungerli in PROJECTS (src/app/data/portfolio.ts). -->
+        <a class="card gh-card" [href]="gh.href" target="_blank" rel="noopener">
+          <span class="mono">Altri lavori</span>
+          <span class="big">Profilo GitHub <span class="circle" aria-hidden="true">↗</span></span>
+          <span class="mono handle">{{ gh.handle }}<span class="sr-only"> (si apre in una nuova scheda)</span></span>
+        </a>
+      </li>
     </ul>
   </div>
 </section>

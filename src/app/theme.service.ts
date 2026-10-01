@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 
 type Theme = 'dark' | 'light';
 const KEY = 'portfolio-theme';
+const META_COLOR: Record<Theme, string> = { light: '#f6f5f1', dark: '#0a0a0a' };
 
+/** Tema chiaro di default; il tema scuro è una scelta esplicita del visitatore, ricordata in localStorage. */
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private current: Theme = 'dark';
+  private current: Theme = this.read();
 
   constructor() {
-    this.current = this.read() ?? (typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
     this.apply();
   }
 
@@ -22,12 +23,11 @@ export class ThemeService {
     return this.current === 'dark';
   }
 
-  private read(): Theme | null {
+  private read(): Theme {
     try {
-      const v = localStorage.getItem(KEY);
-      return v === 'dark' || v === 'light' ? v : null;
+      return localStorage.getItem(KEY) === 'dark' ? 'dark' : 'light';
     } catch {
-      return null;
+      return 'light';
     }
   }
 
@@ -35,5 +35,6 @@ export class ThemeService {
     const root = document.documentElement;
     root.setAttribute('data-theme', this.current);
     root.style.colorScheme = this.current;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', META_COLOR[this.current]);
   }
 }

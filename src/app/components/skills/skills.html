@@ -1,19 +1,17 @@
 <section id="skills" aria-labelledby="skills-title">
   <div class="inner">
-    <span class="eyebrow">03 — Competenze</span>
+    <span class="eyebrow">03 / Competenze</span>
     <h2 id="skills-title">Tecnologie</h2>
-    <div class="grid" appReveal>
-      @for (g of groups; track g.category) {
-        <div class="group">
+    <div class="rows">
+      @for (g of groups; track g.category; let i = $index) {
+        <div class="row" appReveal [revealDelay]="i * 70">
           <h3>{{ g.category }}</h3>
           <ul>
             @for (s of g.skills; track s.name) {
               <li>
-                <span>{{ s.name }}</span>
-                <span class="level">
-                  <span class="dots" aria-hidden="true">
-                    @for (d of dots; track d) { <i [class.on]="d <= s.level"></i> }
-                  </span>
+                <span class="n">{{ s.name }}</span>
+                <span class="lv">
+                  <span class="dots" aria-hidden="true">@for (d of dots; track d) { <i [class.on]="d <= s.level"></i> }</span>
                   {{ s.levelLabel }}
                 </span>
               </li>

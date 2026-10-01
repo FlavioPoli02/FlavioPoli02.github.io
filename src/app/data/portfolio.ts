@@ -9,7 +9,8 @@ export interface Project {
   context: string;
   period: string;
   description: string;
-  tech: string[];
+  /** Anatomia del progetto: livelli e tecnologie, ricavati dalla descrizione. */
+  layers: { label: string; items: string[] }[];
   /** TODO: aggiungere un risultato misurabile o un link (demo/repo) reali. */
   outcome?: string;
   link?: { href: string; label: string };
@@ -75,7 +76,11 @@ export const PROJECTS: Project[] = [
     period: '2024',
     description:
       'Sviluppo di una piattaforma per la gestione di eventi, candidati e aziende. Back-end realizzato con Web API in C# e ASP.NET, front-end in Angular con TypeScript.',
-    tech: ['Angular', 'TypeScript', 'C#', 'ASP.NET', 'Web API REST'],
+    layers: [
+      { label: 'Front-end', items: ['Angular', 'TypeScript'] },
+      { label: 'Back-end', items: ['Web API REST', 'C#', 'ASP.NET'] },
+      { label: 'Dominio', items: ['Eventi', 'Candidati', 'Aziende'] },
+    ],
   },
   {
     title: 'Sito web istituzionale JEUD',
@@ -84,7 +89,10 @@ export const PROJECTS: Project[] = [
     period: '2022',
     description:
       'Coordinamento e sviluppo del sito istituzionale (WordPress con modifiche custom in Bootstrap) e amministrazione dell\'infrastruttura informatica di supporto: servizi cloud, email aziendali e hosting.',
-    tech: ['WordPress', 'Bootstrap', 'HTML/CSS'],
+    layers: [
+      { label: 'Sito', items: ['WordPress', 'Bootstrap custom', 'HTML/CSS'] },
+      { label: 'Infrastruttura', items: ['Servizi cloud', 'Email aziendali', 'Hosting'] },
+    ],
   },
 ];
 

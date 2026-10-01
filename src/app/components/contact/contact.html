@@ -1,18 +1,22 @@
 <section id="contact" aria-labelledby="contact-title">
   <div class="inner" appReveal>
-    <span class="eyebrow">05 — Contatti</span>
-    <h2 id="contact-title">Parliamoci.</h2>
+    <span class="eyebrow">05 / Contatti</span>
+    <h2 id="contact-title">Parliamoci<span class="stop">.</span></h2>
     <p class="sub">Sono aperto a nuove opportunità e collaborazioni. Scrivimi, ti rispondo volentieri.</p>
-    <a class="mail" [href]="'mailto:' + p.email">{{ p.email }}</a>
+
+    <div class="mailrow">
+      <a class="mail" [href]="'mailto:' + p.email"><span>{{ p.email }}</span><span class="arr" aria-hidden="true">↗</span></a>
+      <button type="button" class="copy" (click)="copy()">{{ copied() ? 'Copiato' : 'Copia' }}</button>
+      <span class="sr-only" role="status" aria-live="polite">{{ copied() ? 'Indirizzo email copiato negli appunti' : '' }}</span>
+    </div>
+
     <ul class="links">
       <li><a [href]="p.github.href" target="_blank" rel="noopener">GitHub <span class="mono">{{ p.github.handle }}</span><span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
       <li><a [href]="p.linkedin.href" target="_blank" rel="noopener">LinkedIn <span class="mono">{{ p.linkedin.handle }}</span><span class="sr-only"> (si apre in una nuova scheda)</span></a></li>
     </ul>
   </div>
-</section>
-<footer>
-  <div class="foot">
+  <footer>
     <span>© {{ year }} {{ p.name }}</span>
     <span class="mono">Angular</span>
-  </div>
-</footer>
+  </footer>
+</section>

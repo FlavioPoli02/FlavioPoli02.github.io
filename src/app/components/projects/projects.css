@@ -1,17 +1,46 @@
-:host section { border-top: 1px solid var(--border); }
-.list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-3); }
+.accent { color: var(--accent); }
+sup { font: 500 0.8125rem var(--font-mono); letter-spacing: 0; color: var(--text-3); vertical-align: super; margin-left: 0.25rem; }
+
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--s-3); }
+.slot { grid-column: span 7; display: flex; }
+.slot.wide { grid-column: 1 / -1; }
+.slot.gh { grid-column: span 5; }
+
 .card {
-  display: flex; flex-direction: column; gap: var(--s-1);
-  padding: var(--s-4); background: var(--surface);
-  border: 1px solid var(--border); border-radius: var(--radius);
-  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), opacity 0.5s var(--ease);
+  flex: 1; display: flex; flex-direction: column; gap: var(--s-4); padding: var(--s-4);
+  background: var(--surface); border: 1px solid var(--border); border-radius: calc(var(--radius) + 8px); box-shadow: var(--shadow-1);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
-.card:hover { border-color: var(--border-hover); }
-.head { display: flex; justify-content: space-between; gap: var(--s-2); font: 400 0.8125rem var(--font-mono); color: var(--text-3); margin-bottom: var(--s-1); }
-.role { color: var(--text-1); font-size: 0.9375rem; }
-.desc { color: var(--text-2); margin-bottom: var(--s-2); }
-.outcome { color: var(--text-2); }
-.tags { margin-top: auto; }
-.link { margin-top: var(--s-2); color: var(--accent); text-decoration: none; font-weight: 500; }
-.link:hover { text-decoration: underline; }
-@media (max-width: 800px) { .list { grid-template-columns: 1fr; } .card { padding: var(--s-3); } }
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-2); border-color: var(--border-hover); }
+.wide .card { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--s-8); padding: var(--s-6); }
+
+header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-3); }
+.num { font: 600 clamp(3.5rem, 8vw, 6.5rem)/0.8 var(--font-sans); letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 1.5px var(--text-1); transition: color 0.3s; }
+.card:hover .num { color: var(--accent); -webkit-text-stroke-color: var(--accent); }
+.period { font: 500 0.8125rem var(--font-mono); color: var(--text-3); }
+h3 { font-size: clamp(1.5rem, 2.8vw, 2.25rem); letter-spacing: -0.04em; }
+.role { margin-top: var(--s-1); font-weight: 500; }
+.desc { margin-top: var(--s-2); color: var(--text-2); max-width: 52ch; }
+.outcome { margin-top: var(--s-2); color: var(--text-2); }
+.link { display: inline-block; margin-top: var(--s-2); color: var(--accent); font-weight: 500; text-decoration: none; }
+
+.stack { display: grid; gap: 0; }
+.wide .stack { align-self: end; }
+.stack > li { position: relative; padding: var(--s-2) 0 var(--s-2) var(--s-3); border-left: 1.5px solid var(--border-hover); transition: border-color 0.3s; }
+.stack > li::before { content: ''; position: absolute; left: -5px; top: calc(var(--s-2) + 7px); width: 8.5px; height: 8.5px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--text-1); transition: background 0.3s; }
+.card:hover .stack > li { border-left-color: var(--accent); }
+.card:hover .stack > li::before { background: var(--accent); border-color: var(--accent); }
+.lbl { display: block; font: 500 0.8125rem var(--font-mono); color: var(--text-3); margin-bottom: 0.5rem; }
+
+.gh-card { justify-content: space-between; min-height: 280px; background: var(--band-bg); color: var(--band-fg); border-color: transparent; text-decoration: none; }
+.gh-card:hover { border-color: transparent; }
+.gh-card .mono { font-size: 0.8125rem; color: var(--band-muted); }
+.big { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s-2); font-size: clamp(1.75rem, 3.4vw, 2.75rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.circle { display: grid; place-items: center; flex-shrink: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--band-fg); color: var(--band-bg); font-size: 1.5rem; letter-spacing: 0; transition: transform 0.35s var(--ease), background 0.2s; }
+.gh-card:hover .circle { transform: rotate(45deg); background: var(--band-accent); }
+
+@media (max-width: 900px) {
+  .slot, .slot.gh { grid-column: 1 / -1; }
+  .wide .card { grid-template-columns: 1fr; gap: var(--s-4); padding: var(--s-3); }
+  .card { padding: var(--s-3); }
+}

@@ -1,33 +1,31 @@
 <section id="experience" aria-labelledby="exp-title">
   <div class="inner">
-    <span class="eyebrow">04 — Percorso</span>
+    <span class="eyebrow">04 / Percorso</span>
     <h2 id="exp-title">Esperienza e formazione</h2>
-    <div class="cols" appReveal>
-      <div>
-        <h3 class="col-title">Esperienza</h3>
-        <ol>
-          @for (e of experiences; track e.role) {
-            <li>
-              <span class="period">{{ e.period }} · {{ e.kind }}</span>
-              <h4>{{ e.role }}</h4>
-              <p class="org">{{ e.org }}</p>
-              <p class="desc">{{ e.description }}</p>
-            </li>
-          }
-        </ol>
-      </div>
-      <div>
-        <h3 class="col-title">Formazione</h3>
-        <ol>
-          @for (e of education; track e.title) {
-            <li>
-              <span class="period">{{ e.period }}</span>
-              <h4>{{ e.title }}</h4>
-              <p class="org">{{ e.org }}</p>
-            </li>
-          }
-        </ol>
-      </div>
-    </div>
+
+    <ol class="jobs">
+      @for (e of experiences; track e.role; let i = $index) {
+        <li class="job" appReveal [revealDelay]="i * 90">
+          <span class="year" aria-hidden="true">{{ e.period }}</span>
+          <div class="info">
+            <span class="kind">{{ e.period }} · {{ e.kind }}</span>
+            <h3>{{ e.role }}</h3>
+            <p class="org">{{ e.org }}</p>
+            <p class="desc">{{ e.description }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+
+    <h3 class="edu-h">Formazione</h3>
+    <ol class="edu">
+      @for (e of education; track e.title; let i = $index) {
+        <li appReveal [revealDelay]="i * 90">
+          <span class="period">{{ e.period }}</span>
+          <span class="t">{{ e.title }}</span>
+          <span class="org">{{ e.org }}</span>
+        </li>
+      }
+    </ol>
   </div>
 </section>

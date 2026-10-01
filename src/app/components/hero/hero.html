@@ -1,16 +1,60 @@
 <section id="home" aria-labelledby="hero-title">
-  <div class="inner">
-    <p class="status"><span class="dot" aria-hidden="true"></span>{{ p.availability }}</p>
-    <h1 id="hero-title">{{ p.name }}</h1>
-    <p class="role">{{ p.role }}</p>
-    <p class="desc">
-      Mi sto specializzando in <strong>Algoritmi Avanzati e Ragionamento Automatico</strong>.
-      Mi interessano i problemi complessi e i limiti della complessità computazionale, e cerco
-      sfide e opportunità formative nella progettazione algoritmica avanzata.
-    </p>
-    <div class="ctas">
-      <a href="#projects" class="btn btn-primary">Vedi i progetti</a>
-      <a href="#contact" class="btn">Contattami</a>
+  <div class="inner grid">
+    <div class="copy">
+      <p class="meta mono">
+        <span class="status"><span class="dot" aria-hidden="true"></span>{{ p.availability }}</span>
+        <span class="clock">Udine · {{ time() }}</span>
+      </p>
+      <h1 id="hero-title">
+        <span class="line"><span>Flavio</span></span>{{ ' ' }}<span class="line"><span>Poli<b aria-hidden="true">.</b></span></span>
+      </h1>
+    </div>
+
+    <figure class="graph" role="img" aria-label="Illustrazione decorativa: un grafo pesato con il cammino minimo evidenziato">
+      <svg viewBox="0 0 420 380" aria-hidden="true">
+        <g class="edges">
+          <line x1="45" y1="300" x2="140" y2="335" /><line x1="140" y1="335" x2="230" y2="235" />
+          <line x1="120" y1="170" x2="235" y2="75" /><line x1="230" y1="235" x2="345" y2="110" />
+          <line x1="235" y1="75" x2="345" y2="110" /><line x1="345" y1="110" x2="385" y2="225" />
+          <line x1="45" y1="300" x2="120" y2="170" /><line x1="120" y1="170" x2="230" y2="235" />
+          <line x1="230" y1="235" x2="310" y2="335" /><line x1="310" y1="335" x2="385" y2="225" />
+        </g>
+        <g class="weights">
+          <text x="92" y="318">2</text><text x="175" y="297">6</text><text x="168" y="118">5</text>
+          <text x="294" y="162">4</text><text x="282" y="82">3</text><text x="372" y="160">2</text>
+          <text x="72" y="232">4</text><text x="170" y="196">3</text><text x="262" y="292">2</text><text x="354" y="288">3</text>
+        </g>
+        <path class="route" pathLength="1" d="M45 300 L120 170 L230 235 L310 335 L385 225" />
+        <g class="nodes">
+          <circle class="n" cx="140" cy="335" r="6" /><circle class="n" cx="235" cy="75" r="6" /><circle class="n" cx="345" cy="110" r="6" />
+          <circle class="n on on0" cx="45" cy="300" r="9" /><circle class="n on on1" cx="120" cy="170" r="9" />
+          <circle class="n on on2" cx="230" cy="235" r="9" /><circle class="n on on3" cx="310" cy="335" r="9" />
+          <circle class="n on on4" cx="385" cy="225" r="9" />
+        </g>
+        <g class="tag"><text x="22" y="332">s</text><text x="396" y="206">t</text></g>
+      </svg>
+      <figcaption class="mono">d(s, t) = 12</figcaption>
+    </figure>
+
+    <div class="lower">
+      <p class="role">Studente magistrale <em>in Informatica</em></p>
+      <p class="desc">
+        Mi sto specializzando in <strong>Algoritmi Avanzati e Ragionamento Automatico</strong>.
+        Mi interessano i problemi complessi e i limiti della complessità computazionale, e cerco
+        sfide e opportunità formative nella progettazione algoritmica avanzata.
+      </p>
+      <div class="ctas">
+        <a href="#projects" class="btn btn-primary">Vedi i progetti <span class="arr" aria-hidden="true">→</span></a>
+        <a href="#contact" class="btn">Contattami</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      @for (n of [1, 2]; track n) {
+        <ul>@for (s of strip; track s) { <li>{{ s }}</li> }</ul>
+      }
     </div>
   </div>
 </section>
