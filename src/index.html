@@ -1,17 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="utf-8">
-  <title>Flavio Poli - Portfolio</title>
+  <title>Flavio Poli — Portfolio</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio di Flavio Poli, studente magistrale in Informatica a Udine. Esperienza con Angular, TypeScript, C# e ASP.NET." />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta property="og:site_name" content="Flavio Poli" />
   <meta property="og:title" content="Flavio Poli — Portfolio" />
-  <meta name="description" content="Portfolio di Flavio Poli, Full Stack Developer specializzato in Angular e ASP.NET." />
+  <meta property="og:description" content="Studente magistrale in Informatica a Udine. Angular, TypeScript, C# e ASP.NET." />
+  <meta property="og:type" content="website" />
+  <!-- TODO: aggiungere og:image (1200×630) e og:url con il dominio definitivo. -->
   <meta name="google-site-verification" content="vsGaKAac6yNX59f2ZYMforSsQP0DjMKu2WfOKJ9qoWA" />
-  <link rel="icon" type="image/x-icon" href="favicon.png">
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <script>
+    // Applica il tema prima del primo paint per evitare il flash.
+    try {
+      var t = localStorage.getItem('portfolio-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <app-root></app-root>

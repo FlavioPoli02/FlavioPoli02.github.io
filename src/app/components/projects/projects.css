@@ -1,0 +1,17 @@
+:host section { border-top: 1px solid var(--border); }
+.list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-3); }
+.card {
+  display: flex; flex-direction: column; gap: var(--s-1);
+  padding: var(--s-4); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), opacity 0.5s var(--ease);
+}
+.card:hover { border-color: var(--border-hover); }
+.head { display: flex; justify-content: space-between; gap: var(--s-2); font: 400 0.8125rem var(--font-mono); color: var(--text-3); margin-bottom: var(--s-1); }
+.role { color: var(--text-1); font-size: 0.9375rem; }
+.desc { color: var(--text-2); margin-bottom: var(--s-2); }
+.outcome { color: var(--text-2); }
+.tags { margin-top: auto; }
+.link { margin-top: var(--s-2); color: var(--accent); text-decoration: none; font-weight: 500; }
+.link:hover { text-decoration: underline; }
+@media (max-width: 800px) { .list { grid-template-columns: 1fr; } .card { padding: var(--s-3); } }

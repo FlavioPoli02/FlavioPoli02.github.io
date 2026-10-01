@@ -1,62 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Tema scuro (default) */
-  --bg:          #0A0A0F;
-  --surface:     #111118;
-  --surface-2:   #18181F;
-  --accent:      #4F7EFF;
-  --accent-glow: rgba(79, 126, 255, 0.12);
-  --hero-glow:   rgba(79, 126, 255, 0.14);
-  --text-1:      #EEEEF5;
-  --text-2:      #8A8AA8;
-  --text-3:      #4A4A62;
-  --border:      rgba(255, 255, 255, 0.07);
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body:    'Inter', sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
-  --max-w:       1100px;
-  --section-pad: 6rem 1.5rem;
+  --bg: #000;
+  --surface: #0a0a0a;
+  --border: #262626;
+  --border-hover: #4d4d4d;
+  --text-1: #ededed;
+  --text-2: #a1a1a1;
+  --text-3: #8f8f8f;
+  --accent: #52a8ff;
+  --ok: #3dd68c;
+  --inverse-bg: #ededed;
+  --inverse-fg: #000;
+
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --s-1: 0.5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2rem; --s-6: 3rem; --s-8: 4rem;
+  --max-w: 1080px;
+  --gutter: clamp(1rem, 4vw, 1.5rem);
+  --radius: 8px;
+  --nav-h: 64px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
 [data-theme="light"] {
-  --bg:          #F4F4F8;
-  --surface:     #FFFFFF;
-  --surface-2:   #EAEAF0;
-  --accent:      #3060E0;
-  --accent-glow: rgba(48, 96, 224, 0.1);
-  --hero-glow:   rgba(48, 96, 224, 0.09);
-  --text-1:      #0A0A14;
-  --text-2:      #4A4A6A;
-  --text-3:      #9090AA;
-  --border:      rgba(0, 0, 0, 0.08);
+  --bg: #fff;
+  --surface: #fafafa;
+  --border: #eaeaea;
+  --border-hover: #b3b3b3;
+  --text-1: #0a0a0a;
+  --text-2: #525252;
+  --text-3: #6b6b6b;
+  --accent: #0070f3;
+  --ok: #1a7f4b;
+  --inverse-bg: #0a0a0a;
+  --inverse-fg: #fff;
 }
 
-/* Transizione fluida solo durante il cambio tema */
-.theme-switching *,
-.theme-switching *::before,
-.theme-switching *::after {
-  transition:
-    background-color 0.35s ease,
-    color            0.35s ease,
-    border-color     0.35s ease !important;
-}
-
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); -webkit-text-size-adjust: 100%; }
 
 body {
   background: var(--bg);
   color: var(--text-1);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--accent); color: white; }
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; text-wrap: balance; }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: var(--s-4); }
+h3 { font-size: 1.125rem; letter-spacing: -0.01em; line-height: 1.3; }
+p { text-wrap: pretty; }
+a { color: inherit; }
 
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--text-3); border-radius: 3px; }
+::selection { background: var(--accent); color: #fff; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* --- Layout condiviso --- */
+section { padding: clamp(4rem, 9vw, 7rem) var(--gutter); }
+.inner { max-width: var(--max-w); margin: 0 auto; }
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-3);
+  margin-bottom: var(--s-2);
+}
+
+.mono { font-family: var(--font-mono); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 var(--s-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font: 500 0.9375rem var(--font-sans);
+  text-decoration: none; cursor: pointer;
+  background: transparent; color: var(--text-1);
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.btn:hover { border-color: var(--border-hover); }
+.btn-primary { background: var(--inverse-bg); color: var(--inverse-fg); border-color: var(--inverse-bg); }
+.btn-primary:hover { background: transparent; color: var(--text-1); border-color: var(--text-1); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+.tags li {
+  font: 400 0.8125rem var(--font-mono);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.125rem 0.75rem;
+}
+
+.skip-link {
+  position: fixed; top: 0.5rem; left: 0.5rem; z-index: 200;
+  padding: 0.5rem 1rem; border-radius: var(--radius);
+  background: var(--inverse-bg); color: var(--inverse-fg);
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+
+/* --- Reveal allo scroll --- */
+.reveal { opacity: 0; transform: translateY(8px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
+.reveal-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

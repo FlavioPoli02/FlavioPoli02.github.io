@@ -1,33 +1,25 @@
-<section id="about">
-  <div class="inner">
-    <span class="eyebrow mono accent">/ about</span>
-    <div class="grid">
-      <div class="text">
-        <h2>Chi sono</h2>
-        <p>
-          Attualmente frequento la laurea magistrale in Informatica all'Università di Udine, specializzandomi in Algoritmi Avanzati e Ragionamento Automatico. La mia passione nasce dalla curiosità di analizzare problemi complessi, studiandone i limiti strutturali e i confini della complessità computazionale.
-        </p>
-        <p>
-          Mi affascina principalmente l'approccio analitico: comprendere a fondo la natura di una sfida logica per poi progettarne la strategia risolutiva più efficiente.
-        </p>
-        <div class="details">
-          <div class="row">
-            <span class="label">Posizione</span>
-            <span>Udine, Italia</span>
-          </div>
-          <div class="row">
-            <span class="label">Disponibilità</span>
-            <span class="open">Aperto a opportunità</span>
-          </div>
-          <div class="row">
-            <span class="label">Email</span>
-            <span>flaviop.fli@gmail.com</span>
-          </div>
-        </div>
-      </div>
-      <div class="photo-wrap">
-        <img class="photo" src="foto.png" alt="Flavio Poli" />
-      </div>
+<section id="about" aria-labelledby="about-title">
+  <div class="inner grid" appReveal>
+    <div class="text">
+      <span class="eyebrow">01 — Chi sono</span>
+      <h2 id="about-title">Analizzare a fondo, poi risolvere con efficienza.</h2>
+      <p>
+        Frequento la laurea magistrale in Informatica all'Università di Udine, specializzandomi in
+        Algoritmi Avanzati e Ragionamento Automatico. La mia passione nasce dalla curiosità di
+        analizzare problemi complessi, studiandone i limiti strutturali e i confini della
+        complessità computazionale.
+      </p>
+      <p>
+        Mi affascina l'approccio analitico: comprendere la natura di una sfida logica per poi
+        progettarne la strategia risolutiva più efficiente.
+      </p>
+      <dl>
+        <div><dt>Posizione</dt><dd>{{ p.location }}</dd></div>
+        <div><dt>Disponibilità</dt><dd>{{ p.availability }}</dd></div>
+        <div><dt>Email</dt><dd><a [href]="'mailto:' + p.email">{{ p.email }}</a></dd></div>
+      </dl>
     </div>
+    <img class="photo" src="foto.jpg" width="532" height="492" loading="lazy" decoding="async"
+      alt="Ritratto di Flavio Poli in giacca blu e cravatta rossa, con una corona d'alloro, all'aperto" />
   </div>
 </section>

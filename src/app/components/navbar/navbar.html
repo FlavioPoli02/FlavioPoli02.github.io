@@ -1,40 +1,33 @@
-<nav [class.scrolled]="scrolled" [class.menu-open]="menuOpen">
-  <div class="nav-inner">
-    <span class="logo" (click)="scrollTo('home')">Flavio Poli</span>
-    <div class="nav-right">
-      <!-- Link desktop -->
-      <ul class="nav-links">
-        <li><button (click)="scrollTo('about')">About</button></li>
-        <li><button (click)="scrollTo('skills')">Skills</button></li>
-        <li><button (click)="scrollTo('experience')">Esperienza</button></li>
-        <li><button (click)="scrollTo('contact')" class="cta-nav">Contattami</button></li>
+<header [class.scrolled]="scrolled" [class.menu-open]="menuOpen">
+  <div class="bar">
+    <a class="logo" href="#home" (click)="closeMenu()">{{ name }}</a>
+
+    <nav aria-label="Principale" class="links" id="site-menu" [class.open]="menuOpen">
+      <ul>
+        @for (item of nav; track item.id) {
+          <li>
+            <a [href]="'#' + item.id" [attr.aria-current]="active === item.id ? 'location' : null" (click)="closeMenu()">{{ item.label }}</a>
+          </li>
+        }
+        <li><a href="#contact" class="cta" [attr.aria-current]="active === 'contact' ? 'location' : null" (click)="closeMenu()">Contatti</a></li>
       </ul>
-      <!-- Toggle tema (sempre visibile) -->
-      <button
-        class="theme-toggle"
-        (click)="theme.toggle()"
-        [title]="theme.isDark() ? 'Passa al tema chiaro' : 'Passa al tema scuro'"
-      >
-        <span class="icon-sun">☀</span>
-        <span class="icon-moon">☾</span>
-        <span class="toggle-thumb" [class.light]="!theme.isDark()"></span>
+    </nav>
+
+    <div class="tools">
+      <button type="button" class="icon-btn" (click)="theme.toggle()"
+        [attr.aria-label]="theme.isDark() ? 'Passa al tema chiaro' : 'Passa al tema scuro'">
+        @if (theme.isDark()) {
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        } @else {
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        }
       </button>
-      <!-- Hamburger (solo mobile) -->
-      <button class="hamburger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button type="button" class="icon-btn menu-btn" (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen" aria-controls="site-menu" aria-label="Menu">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          @if (menuOpen) { <path d="M6 6l12 12M18 6L6 18"/> } @else { <path d="M4 7h16M4 12h16M4 17h16"/> }
+        </svg>
       </button>
     </div>
   </div>
-
-  <!-- Menu mobile -->
-  <div class="mobile-menu" [class.open]="menuOpen">
-    <ul>
-      <li><button (click)="scrollTo('about')">About</button></li>
-      <li><button (click)="scrollTo('skills')">Skills</button></li>
-      <li><button (click)="scrollTo('experience')">Esperienza</button></li>
-      <li><button (click)="scrollTo('contact')" class="cta-mobile">Contattami</button></li>
-    </ul>
-  </div>
-</nav>
+</header>

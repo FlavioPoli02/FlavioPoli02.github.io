@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { PROFILE } from '../../data/portfolio';
 
 @Component({
   selector: 'app-hero',
-  standalone: true,
   templateUrl: './hero.html',
   styleUrl: './hero.css'
 })
-export class Hero {}
+export class Hero {
+  protected p = PROFILE;
+}

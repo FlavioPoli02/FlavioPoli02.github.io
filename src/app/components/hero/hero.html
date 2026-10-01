@@ -1,19 +1,16 @@
-<section id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <span class="eyebrow">Ciao, sono</span>
-    <h1 class="name">Flavio Poli</h1>
-    <p class="role">
-      <span class="mono">Studente Magistrale in Informatica</span>
-      <span class="cursor">_</span>
-    </p>
+<section id="home" aria-labelledby="hero-title">
+  <div class="inner">
+    <p class="status"><span class="dot" aria-hidden="true"></span>{{ p.availability }}</p>
+    <h1 id="hero-title">{{ p.name }}</h1>
+    <p class="role">{{ p.role }}</p>
     <p class="desc">
-      Attualmente mi sto specializzando in <strong>Algoritmi Avanzati e Ragionamento Automatico</strong>. Affascinato dallo studio dei problemi e dai limiti della complessità computazionale, cerco sfide e opportunità formative per dedicarmi alla progettazione algoritmica avanzata.
+      Mi sto specializzando in <strong>Algoritmi Avanzati e Ragionamento Automatico</strong>.
+      Mi interessano i problemi complessi e i limiti della complessità computazionale, e cerco
+      sfide e opportunità formative nella progettazione algoritmica avanzata.
     </p>
-    <div class="hero-ctas">
-      <a href="#experience" class="btn-primary">Vedi i miei progetti</a>
-      <a href="#contact" class="btn-secondary">Contattami</a>
+    <div class="ctas">
+      <a href="#projects" class="btn btn-primary">Vedi i progetti</a>
+      <a href="#contact" class="btn">Contattami</a>
     </div>
   </div>
 </section>

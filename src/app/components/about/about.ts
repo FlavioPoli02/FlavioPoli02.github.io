@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { PROFILE } from '../../data/portfolio';
+import { Reveal } from '../../directives/reveal';
 
 @Component({
   selector: 'app-about',
-  standalone: true,
+  imports: [Reveal],
   templateUrl: './about.html',
   styleUrl: './about.css'
 })
-export class About {}
+export class About {
+  protected p = PROFILE;
+}

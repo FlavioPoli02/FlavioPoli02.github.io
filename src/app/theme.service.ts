@@ -1,28 +1,39 @@
 import { Injectable } from '@angular/core';
 
+type Theme = 'dark' | 'light';
+const KEY = 'portfolio-theme';
+
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private current: 'dark' | 'light' = 'dark';
+  private current: Theme = 'dark';
 
   constructor() {
-    const saved = localStorage.getItem('portfolio-theme') as 'dark' | 'light' | null;
-    this.current = saved ?? 'dark';
+    this.current = this.read() ?? (typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
     this.apply();
   }
 
   toggle() {
-    document.documentElement.classList.add('theme-switching');
     this.current = this.current === 'dark' ? 'light' : 'dark';
     this.apply();
-    localStorage.setItem('portfolio-theme', this.current);
-    setTimeout(() => document.documentElement.classList.remove('theme-switching'), 400);
+    try { localStorage.setItem(KEY, this.current); } catch { /* storage non disponibile */ }
   }
 
   isDark(): boolean {
     return this.current === 'dark';
   }
 
+  private read(): Theme | null {
+    try {
+      const v = localStorage.getItem(KEY);
+      return v === 'dark' || v === 'light' ? v : null;
+    } catch {
+      return null;
+    }
+  }
+
   private apply() {
-    document.documentElement.setAttribute('data-theme', this.current);
+    const root = document.documentElement;
+    root.setAttribute('data-theme', this.current);
+    root.style.colorScheme = this.current;
   }
 }

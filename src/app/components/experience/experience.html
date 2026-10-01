@@ -1,66 +1,32 @@
-<section id="experience">
+<section id="experience" aria-labelledby="exp-title">
   <div class="inner">
-    <span class="eyebrow mono accent">/ esperienza</span>
-    <h2>Esperienza</h2>
-
-    <div class="timeline">
-      <div class="item">
-        <div class="meta">
-          <span class="period">2024</span>
-          <span class="badge">Tirocinio</span>
-        </div>
-        <div class="card">
-          <h3>Full Stack Developer</h3>
-          <p class="company">Innov@ctors — Udine</p>
-          <p class="desc">
-            Sviluppo di una piattaforma per la gestione di eventi, candidati e
-            aziende. Back-end realizzato con Web API in C# e ASP.NET, front-end
-            in Angular con TypeScript.
-          </p>
-          <div class="tags">
-            <span>Angular</span>
-            <span>TypeScript</span>
-            <span>C#</span>
-            <span>ASP.NET</span>
-            <span>Web API REST</span>
-          </div>
-        </div>
+    <span class="eyebrow">04 — Percorso</span>
+    <h2 id="exp-title">Esperienza e formazione</h2>
+    <div class="cols" appReveal>
+      <div>
+        <h3 class="col-title">Esperienza</h3>
+        <ol>
+          @for (e of experiences; track e.role) {
+            <li>
+              <span class="period">{{ e.period }} · {{ e.kind }}</span>
+              <h4>{{ e.role }}</h4>
+              <p class="org">{{ e.org }}</p>
+              <p class="desc">{{ e.description }}</p>
+            </li>
+          }
+        </ol>
       </div>
-      <div class="item">
-        <div class="meta">
-          <span class="period">2022</span>
-          <span class="badge">Esperienza</span>
-        </div>
-        <div class="card">
-          <h3>IT Manager & Web Developer</h3>
-          <p class="company">JEUD — Udine</p>
-          <p class="desc">
-            Ho gestito a 360° l'ecosistema digitale di una piccola organizzazione. Ho coordinato e sviluppato il sito web istituzionale (WordPress e modifiche custom in Bootstrap) e amministrato l'intera infrastruttura informatica di supporto, inclusi servizi cloud, email aziendali e l'hosting del sito.
-          </p>
-          <div class="tags">
-            <span>WordPress</span>
-            <span>Bootstrap</span>
-            <span>HTML/CSS</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="education">
-      <span class="edu-title mono accent">/ istruzione</span>
-      <div class="edu-item">
-        <span class="period">2025/26 – ...</span>
-        <div>
-          <h3>Laurea magistrale in Informatica</h3>
-          <p class="company">Università degli studi di Udine</p>
-        </div>
-      </div>
-      <div class="edu-item">
-        <span class="period">2020/21 – 2023/24</span>
-        <div>
-          <h3>Laurea triennale in Informatica</h3>
-          <p class="company">Università degli studi di Udine</p>
-        </div>
+      <div>
+        <h3 class="col-title">Formazione</h3>
+        <ol>
+          @for (e of education; track e.title) {
+            <li>
+              <span class="period">{{ e.period }}</span>
+              <h4>{{ e.title }}</h4>
+              <p class="org">{{ e.org }}</p>
+            </li>
+          }
+        </ol>
       </div>
     </div>
   </div>

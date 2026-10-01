@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { PROFILE } from '../../data/portfolio';
+import { Reveal } from '../../directives/reveal';
 
 @Component({
   selector: 'app-contact',
-  standalone: true,
+  imports: [Reveal],
   templateUrl: './contact.html',
   styleUrl: './contact.css'
 })
-export class Contact {}
+export class Contact {
+  protected p = PROFILE;
+  protected year = new Date().getFullYear();
+}
