@@ -26,6 +26,7 @@ export interface Experience {
 
 export interface Education { period: string; title: string; org: string; }
 
+// TODO SEO: aggiungere un'immagine di anteprima 1200×630 in public/ e i tag og:image / twitter:image in src/index.html.
 export const PROFILE = {
   name: 'Flavio Poli',
   role: 'Studente magistrale in Informatica',

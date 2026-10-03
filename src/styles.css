@@ -1,3 +1,7 @@
+/* Font inclusi nel progetto (OFL): nessuna richiesta a server di terzi. */
+@import '@fontsource-variable/geist/wght.css';
+@import '@fontsource-variable/geist-mono/wght.css';
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* Tema chiaro = tema principale (default). Tema scuro: [data-theme="dark"]. */
@@ -20,8 +24,8 @@
   --shadow-1: 0 1px 2px rgba(12, 12, 13, 0.06), 0 1px 0 rgba(12, 12, 13, 0.03);
   --shadow-2: 0 1px 2px rgba(12, 12, 13, 0.05), 0 18px 40px -22px rgba(12, 12, 13, 0.28);
 
-  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-sans: 'Geist Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --s-1: 0.5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2rem; --s-6: 3rem; --s-8: 4rem;
   --max-w: 1160px;

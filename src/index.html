@@ -2,21 +2,35 @@
 <html lang="it" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <title>Flavio Poli — Portfolio</title>
+  <title>Flavio Poli — Portfolio | Informatica e sviluppo web a Udine</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio di Flavio Poli, studente magistrale in Informatica a Udine. Esperienza con Angular, TypeScript, C# e ASP.NET." />
+  <meta name="description" content="Portfolio di Flavio Poli, studente magistrale in Informatica a Udine: sviluppo web con Angular, TypeScript, C# e ASP.NET, interesse per algoritmi avanzati." />
+  <link rel="canonical" href="https://flaviopoli02.github.io/" />
   <meta name="theme-color" content="#f6f5f1" />
   <meta property="og:site_name" content="Flavio Poli" />
-  <meta property="og:title" content="Flavio Poli — Portfolio" />
-  <meta property="og:description" content="Studente magistrale in Informatica a Udine. Angular, TypeScript, C# e ASP.NET." />
   <meta property="og:type" content="website" />
-  <!-- TODO: aggiungere og:image (1200×630) e og:url con il dominio definitivo. -->
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:url" content="https://flaviopoli02.github.io/" />
+  <meta property="og:title" content="Flavio Poli — Portfolio" />
+  <meta property="og:description" content="Studente magistrale in Informatica a Udine. Sviluppo web con Angular, TypeScript, C# e ASP.NET." />
+  <meta name="twitter:card" content="summary" />
   <meta name="google-site-verification" content="vsGaKAac6yNX59f2ZYMforSsQP0DjMKu2WfOKJ9qoWA" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Flavio Poli",
+    "url": "https://flaviopoli02.github.io/",
+    "image": "https://flaviopoli02.github.io/foto.jpg",
+    "description": "Studente magistrale in Informatica all'Università di Udine.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Udine", "addressCountry": "IT" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Università degli Studi di Udine" },
+    "knowsAbout": ["Angular", "TypeScript", "C#", "ASP.NET", "Web API REST", "Algoritmi avanzati", "Ragionamento automatico"],
+    "sameAs": ["https://github.com/FlavioPoli02", "https://linkedin.com/in/flavio-poli-09b67023b/"]
+  }
+  </script>
   <script>
     // Tema chiaro di default (indipendente dal sistema). Applica il tema scuro prima del primo paint solo se scelto in precedenza.
     try {
@@ -29,5 +43,16 @@
 </head>
 <body>
   <app-root></app-root>
+  <noscript>
+    <main style="max-width:40rem;margin:4rem auto;padding:0 1.5rem;font-family:system-ui,sans-serif;line-height:1.6">
+      <h1>Flavio Poli</h1>
+      <p>Studente magistrale in Informatica all'Università di Udine. Sviluppo web con Angular, TypeScript, C# e ASP.NET; mi interesso di algoritmi avanzati e ragionamento automatico.</p>
+      <p>Per vedere il portfolio completo serve JavaScript.</p>
+      <ul>
+        <li><a href="https://github.com/FlavioPoli02">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/flavio-poli-09b67023b/">LinkedIn</a></li>
+      </ul>
+    </main>
+  </noscript>
 </body>
 </html>

@@ -22,7 +22,7 @@ Presenta chi sono, i progetti in evidenza, le competenze, il percorso di studi e
 | Framework | [Angular](https://angular.dev) 22, componenti standalone |
 | Linguaggio | TypeScript |
 | Stile | CSS puro con variabili (design token), nessuna libreria UI |
-| Font | [Geist](https://vercel.com/font) e Geist Mono, da Google Fonts |
+| Font | [Geist](https://vercel.com/font) e Geist Mono, inclusi nel progetto con `@fontsource-variable` (licenza OFL): nessuna richiesta a server esterni |
 | Test | Vitest (tramite `ng test`) |
 | Deploy | GitHub Pages con [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages) |
 
@@ -30,7 +30,7 @@ Presenta chi sono, i progetti in evidenza, le competenze, il percorso di studi e
 
 ```
 src/
-├── index.html              # meta tag, font, script anti-flash del tema
+├── index.html              # meta tag SEO, dati strutturati, script anti-flash del tema
 ├── styles.css              # design token (chiaro/scuro) e stili condivisi
 └── app/
     ├── app.ts / app.html   # composizione delle sezioni
@@ -47,7 +47,7 @@ src/
         ├── skills/
         ├── experience/
         └── contact/
-public/                     # favicon e foto
+public/                     # favicon, foto, robots.txt e sitemap.xml
 DESIGN.md                   # linee guida di design (palette, tipografia, componenti)
 ```
 
@@ -80,6 +80,11 @@ Quasi tutti i contenuti vivono in un unico file: [`src/app/data/portfolio.ts`](s
 - `EXPERIENCES` e `EDUCATION`: esperienza e formazione.
 
 I testi più lunghi delle sezioni «Chi sono» e «Hero» si trovano nei rispettivi template, in `src/app/components/about/about.html` e `src/app/components/hero/hero.html`.
+
+## Privacy e SEO
+
+- **Nessun cookie, nessun tracciamento.** Il sito non usa analytics né contenuti di terze parti. L'unico dato salvato nel browser è la scelta del tema scuro (`localStorage`), scritta solo quando il visitatore usa lo switch.
+- **SEO di base**: titolo e description, URL canonico, dati strutturati JSON-LD (`Person`), `robots.txt` e `sitemap.xml` in `public/`. Se cambia il dominio, vanno aggiornati gli URL in `src/index.html`, `public/robots.txt` e `public/sitemap.xml`.
 
 ## Tema
 
