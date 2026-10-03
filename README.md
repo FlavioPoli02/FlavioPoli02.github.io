@@ -1,59 +1,105 @@
-# Portfolio
+# Flavio Poli — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.4.
+Sito personale di Flavio Poli, studente magistrale in Informatica all'Università di Udine.
+Presenta chi sono, i progetti in evidenza, le competenze, il percorso di studi e lavoro e i contatti.
 
-## Development server
+**Sito online:** https://flaviopoli02.github.io/
 
-To start a local development server, run:
+## Caratteristiche
 
-```bash
-ng serve
+- **Single page** con sezioni: hero, chi sono, progetti, competenze, percorso, contatti.
+- **Hero con identità propria**: nome a corpo enorme e un grafo pesato con il cammino minimo che si disegna in loop, un richiamo agli Algoritmi Avanzati di cui mi occupo.
+- **Progetti in evidenza** come case study, con l'«anatomia» di ogni progetto (livelli e tecnologie).
+- **Tema chiaro di default**, indipendente dalle impostazioni del sistema. Il tema scuro si attiva con lo switch nella navbar e la scelta viene ricordata, senza flash al caricamento.
+- **Responsive**: pensato per mobile, tablet e desktop.
+- **Accessibile**: link di navigazione reali, skip-link, focus visibile, contrasto verificato in entrambi i temi, area cliccabile minima di 44px e rispetto di `prefers-reduced-motion`.
+- **Animazioni sobrie**: comparsa allo scroll, barra di avanzamento e micro-interazioni, tutte disattivate per chi preferisce meno movimento.
+
+## Stack
+
+| | |
+|---|---|
+| Framework | [Angular](https://angular.dev) 22, componenti standalone |
+| Linguaggio | TypeScript |
+| Stile | CSS puro con variabili (design token), nessuna libreria UI |
+| Font | [Geist](https://vercel.com/font) e Geist Mono, da Google Fonts |
+| Test | Vitest (tramite `ng test`) |
+| Deploy | GitHub Pages con [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages) |
+
+## Struttura del progetto
+
+```
+src/
+├── index.html              # meta tag, font, script anti-flash del tema
+├── styles.css              # design token (chiaro/scuro) e stili condivisi
+└── app/
+    ├── app.ts / app.html   # composizione delle sezioni
+    ├── theme.service.ts    # tema chiaro/scuro, salvato in localStorage
+    ├── data/
+    │   └── portfolio.ts    # TUTTI i contenuti: profilo, progetti, competenze, esperienze
+    ├── directives/
+    │   └── reveal.ts       # animazione di comparsa allo scroll
+    └── components/
+        ├── navbar/         # pillola di navigazione, switch del tema, barra di avanzamento
+        ├── hero/
+        ├── about/
+        ├── projects/
+        ├── skills/
+        ├── experience/
+        └── contact/
+public/                     # favicon e foto
+DESIGN.md                   # linee guida di design (palette, tipografia, componenti)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Sviluppo in locale
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Servono Node.js (una versione supportata da Angular 22) e npm.
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Poi apri http://localhost:4200. La pagina si aggiorna a ogni modifica ai sorgenti.
+
+Altri comandi:
 
 ```bash
-ng generate --help
+npm test                     # avvia i test
+npx ng test --watch=false    # test una sola volta
+npm run build                # build di produzione in dist/portfolio
 ```
 
-## Building
+## Modificare i contenuti
 
-To build the project run:
+Quasi tutti i contenuti vivono in un unico file: [`src/app/data/portfolio.ts`](src/app/data/portfolio.ts).
+
+- `PROFILE`: nome, ruolo, città, disponibilità, email e link social.
+- `PROJECTS`: progetti in evidenza. Ogni progetto ha periodo, ruolo, descrizione e i livelli (`layers`) mostrati nell'anatomia. Si possono aggiungere `outcome` (risultato) e `link` (demo o repository).
+- `SKILL_GROUPS`: competenze per categoria, con livello da 1 a 3.
+- `EXPERIENCES` e `EDUCATION`: esperienza e formazione.
+
+I testi più lunghi delle sezioni «Chi sono» e «Hero» si trovano nei rispettivi template, in `src/app/components/about/about.html` e `src/app/components/hero/hero.html`.
+
+## Tema
+
+Il sito parte sempre in tema chiaro. Il tema scuro è una scelta esplicita del visitatore, salvata in `localStorage` (chiave `portfolio-theme`). I colori sono variabili CSS in `src/styles.css`: quelle di default descrivono il tema chiaro, `[data-theme="dark"]` le ridefinisce per lo scuro.
+
+## Design
+
+Direzione stilistica, palette, tipografia e componenti sono descritti in [`DESIGN.md`](DESIGN.md). Conviene aggiornarlo quando si cambia qualcosa di strutturale nel design.
+
+## Deploy
+
+Il sito è un *user site* di GitHub Pages (`FlavioPoli02.github.io`) e viene servito dal branch `gh-pages`. Per pubblicare una nuova versione:
 
 ```bash
-ng build
+npx ng deploy
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Il comando fa la build di produzione e aggiorna `gh-pages`. Un `git push` su `main` salva il codice sorgente ma **non** aggiorna il sito: serve il deploy. La nuova versione è di solito visibile dopo uno o due minuti.
 
-## Running unit tests
+## Contatti
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- GitHub: [FlavioPoli02](https://github.com/FlavioPoli02)
+- LinkedIn: [Flavio Poli](https://linkedin.com/in/flavio-poli-09b67023b/)
