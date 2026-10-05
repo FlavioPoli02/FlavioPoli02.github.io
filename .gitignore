@@ -43,3 +43,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Strumenti locali (non vanno nel repository)
+/.claude/
+/graphify-out/

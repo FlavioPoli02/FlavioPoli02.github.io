@@ -32,8 +32,8 @@ export const PROFILE = {
   role: 'Studente magistrale in Informatica',
   location: 'Udine, Italia',
   availability: 'Aperto a opportunità',
-  // TODO: nel sito c'erano due email diverse (flaviop.fli@gmail.com e flaviopoli952@gmail.com).
-  // Qui è usata quella del link di contatto originale: verifica che sia quella giusta.
+  // TODO: nel vecchio sito c'erano due email diverse. Qui è usata quella del link di contatto
+  // originale: verifica che sia quella giusta.
   email: 'flaviopoli952@gmail.com',
   github: { href: 'https://github.com/FlavioPoli02', handle: 'FlavioPoli02' },
   linkedin: { href: 'https://linkedin.com/in/flavio-poli-09b67023b/', handle: 'Flavio Poli' },
