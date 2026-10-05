@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import { ThemeService } from '../../theme.service';
 import { NAV, PROFILE } from '../../data/portfolio';
 
@@ -9,6 +9,7 @@ import { NAV, PROFILE } from '../../data/portfolio';
 })
 export class Navbar implements OnInit, OnDestroy {
   protected theme = inject(ThemeService);
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
   protected nav = NAV;
   protected name = PROFILE.name;
   protected scrolled = false;
@@ -40,6 +41,12 @@ export class Navbar implements OnInit, OnDestroy {
 
   @HostListener('document:keydown.escape')
   closeMenu() { this.menuOpen = false; }
+
+  /** Un tocco fuori dalla navbar chiude il menu mobile. */
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(e: MouseEvent) {
+    if (this.menuOpen && !this.host.nativeElement.querySelector('.pill')?.contains(e.target as Node)) this.menuOpen = false;
+  }
 
   toggleMenu() { this.menuOpen = !this.menuOpen; }
 }

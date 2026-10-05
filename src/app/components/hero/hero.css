@@ -1,18 +1,18 @@
 section { min-height: 100svh; display: flex; flex-direction: column; padding: calc(var(--nav-h) + var(--s-4)) 0 0; }
 .grid {
-  flex: 1; width: 100%; padding: 0 var(--gutter) var(--s-8);
+  flex: 1; width: 100%; padding: 0 var(--gutter) var(--s-6);
   display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr; column-gap: var(--s-3); align-items: end;
 }
 .copy { grid-column: 1 / 9; grid-row: 1; align-self: start; padding-top: var(--s-4); }
 .graph { grid-column: 8 / 13; grid-row: 1 / 3; align-self: center; margin: 0; }
-.lower { grid-column: 1 / 7; grid-row: 2; padding-top: var(--s-6); }
+.lower { grid-column: 1 / 7; grid-row: 2; padding-top: var(--s-4); }
 
 .meta { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); font-size: 0.8125rem; color: var(--text-2); margin-bottom: var(--s-4); }
 .status { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.875rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-1); }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s ease-in-out infinite; }
 .clock { padding: 0.25rem 0; }
 
-h1 { font-size: clamp(4.5rem, 14.5vw, 11.5rem); letter-spacing: -0.065em; line-height: 0.88; }
+h1 { font-size: clamp(4.5rem, min(14.5vw, 19vh), 11.5rem); letter-spacing: -0.065em; line-height: 0.88; }
 .line { display: block; overflow: hidden; padding: 0.04em 0 0.1em; margin-bottom: -0.1em; }
 .line > span { display: inline-block; animation: rise 1s var(--ease) both; }
 .line:nth-child(2) > span { animation-delay: 0.1s; }
@@ -38,7 +38,6 @@ figcaption { margin-top: var(--s-1); text-align: right; font-size: 0.8125rem; co
 
 .strip { border-block: 1px solid var(--border); background: var(--surface); overflow: hidden; }
 .track { display: flex; width: max-content; animation: marquee 48s linear infinite; }
-.strip:hover .track { animation-play-state: paused; }
 .strip ul { display: flex; flex-shrink: 0; }
 .strip li { padding: 1rem 0; font: 500 0.875rem var(--font-mono); color: var(--text-2); white-space: nowrap; }
 .strip li::after { content: '/'; margin: 0 1.5rem; color: var(--accent); }
@@ -54,8 +53,18 @@ figcaption { margin-top: var(--s-1); text-align: right; font-size: 0.8125rem; co
 @keyframes l3 { 0%, 40% { fill: var(--surface); } 43%, 86% { fill: var(--accent); } 100% { fill: var(--surface); } }
 @keyframes l4 { 0%, 54% { fill: var(--surface); } 57%, 86% { fill: var(--accent); } 100% { fill: var(--surface); } }
 
+@media (max-width: 640px) {
+  .weights text { font-size: 13px; }
+  .tag text { font-size: 15px; }
+}
+
 @media (max-width: 900px) {
   .grid { display: flex; flex-direction: column; align-items: stretch; gap: var(--s-4); }
   .graph { max-width: 440px; width: 100%; align-self: flex-end; }
   .lower { padding-top: 0; }
+}
+
+/* Effetti hover solo dove esiste un vero hover (niente stati "appiccicati" al tocco). */
+@media (hover: hover) {
+  .strip:hover .track { animation-play-state: paused; }
 }

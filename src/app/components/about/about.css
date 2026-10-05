@@ -5,8 +5,10 @@
   position: relative; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 25%;
   border-radius: var(--radius); box-shadow: var(--shadow-2); transform: rotate(-2deg); transition: transform 0.4s var(--ease);
 }
-.photo-wrap:hover .photo { transform: rotate(0); }
-.photo-wrap:hover .frame { transform: translate(8px, 8px) rotate(0); }
+@media (hover: hover) {
+  .photo-wrap:hover .photo { transform: rotate(0); }
+  .photo-wrap:hover .frame { transform: translate(8px, 8px) rotate(0); }
+}
 
 .text { grid-column: 6 / 13; }
 h2 { font-size: clamp(2.25rem, 5.2vw, 4rem); margin-bottom: var(--s-4); }
@@ -17,10 +19,15 @@ dl { margin-top: var(--s-6); display: grid; grid-template-columns: repeat(3, aut
 dt { font: 400 0.8125rem var(--font-mono); color: var(--text-3); }
 dd { font-weight: 500; overflow-wrap: anywhere; }
 dd a { display: inline-block; padding: 0.5rem 0; margin: -0.5rem 0; text-decoration: underline; text-decoration-color: var(--border-hover); text-underline-offset: 4px; transition: text-decoration-color 0.2s; }
-dd a:hover { text-decoration-color: var(--accent); }
 
 @media (max-width: 900px) {
-  .photo-wrap { grid-column: 1 / -1; position: static; max-width: 260px; margin-left: 8px; }
+  .photo-wrap { grid-column: 1 / -1; position: relative; top: auto; max-width: 260px; }
   .text { grid-column: 1 / -1; }
 }
+@media (min-width: 901px) and (max-width: 1100px) { .cols { columns: 1; } }
 @media (max-width: 640px) { .cols { columns: 1; } dl { grid-template-columns: 1fr; gap: var(--s-2); } }
+
+/* Effetti hover solo dove esiste un vero hover (niente stati "appiccicati" al tocco). */
+@media (hover: hover) {
+  dd a:hover { text-decoration-color: var(--accent); }
+}

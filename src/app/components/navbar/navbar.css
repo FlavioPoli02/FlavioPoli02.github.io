@@ -6,11 +6,12 @@
 }
 
 header {
-  position: fixed; z-index: 100; top: 14px; left: 50%; transform: translateX(-50%);
-  width: min(var(--max-w), calc(100% - 2 * var(--gutter)));
+  position: fixed; z-index: 100; top: 14px; left: 0; right: 0; padding: 0 var(--gutter);
+  pointer-events: none;
 }
 .pill {
   position: relative; display: flex; align-items: center; gap: var(--s-1);
+  max-width: var(--max-w); margin-inline: auto; pointer-events: auto;
   height: 60px; padding: 0 0.5rem 0 0.5rem;
   background: color-mix(in srgb, var(--surface) 82%, transparent);
   backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px);
@@ -25,7 +26,6 @@ header.scrolled .pill { box-shadow: var(--shadow-2); }
   background: var(--text-1); color: var(--bg); font: 600 0.8125rem var(--font-mono); letter-spacing: 0;
   transition: transform 0.3s var(--ease);
 }
-.logo:hover .mark { transform: rotate(-12deg) scale(1.05); }
 
 .links ul { display: flex; align-items: center; gap: 2px; }
 .links a {
@@ -33,17 +33,14 @@ header.scrolled .pill { box-shadow: var(--shadow-2); }
   font-size: 0.9375rem; color: var(--text-2); text-decoration: none;
   transition: color 0.15s, background-color 0.2s;
 }
-.links a:hover { color: var(--text-1); background: var(--surface-2); }
 .links a[aria-current] { color: var(--text-1); background: var(--surface-2); }
 .links a.cta { background: var(--text-1); color: var(--bg); margin-left: 0.25rem; }
-.links a.cta:hover { background: var(--accent); color: #fff; }
 
 .switch {
   display: inline-flex; align-items: center; gap: 0.625rem; min-height: 44px; padding: 0 0.25rem 0 0.75rem;
   background: transparent; border: 0; border-radius: 999px; cursor: pointer; color: var(--text-2);
   font: 500 0.8125rem var(--font-mono);
 }
-.switch:hover { color: var(--text-1); }
 .track {
   position: relative; width: 48px; height: 28px; border-radius: 999px;
   background: var(--surface-2); border: 1px solid var(--border-hover);
@@ -75,4 +72,12 @@ header.scrolled .pill { box-shadow: var(--shadow-2); }
   .links ul { flex-direction: column; align-items: stretch; }
   .links a { display: flex; font-size: 1.0625rem; padding: 0 1rem; }
   .links a.cta { margin: 0.25rem 0 0; justify-content: center; }
+}
+
+/* Effetti hover solo dove esiste un vero hover (niente stati "appiccicati" al tocco). */
+@media (hover: hover) {
+  .logo:hover .mark { transform: rotate(-12deg) scale(1.05); }
+  .links a:hover { color: var(--text-1); background: var(--surface-2); }
+  .links a.cta:hover { background: var(--accent); color: #fff; }
+  .switch:hover { color: var(--text-1); }
 }

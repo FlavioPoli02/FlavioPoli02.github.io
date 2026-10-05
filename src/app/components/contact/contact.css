@@ -14,15 +14,19 @@ h2 { font-size: clamp(3.5rem, 15vw, 12rem); letter-spacing: -0.07em; line-height
   background: linear-gradient(var(--band-accent), var(--band-accent)) 0 100% / 0 3px no-repeat; padding-bottom: 0.15em;
   transition: background-size 0.4s var(--ease), color 0.2s;
 }
-.mail:hover { background-size: 100% 3px; color: var(--band-accent); }
 .mail .arr { display: inline-block; transition: transform 0.3s var(--ease); }
-.mail:hover .arr { transform: translate(4px, -4px); }
 .copy { min-height: 44px; padding: 0 1.25rem; border-radius: 999px; border: 1px solid var(--band-muted); background: transparent; color: var(--band-fg); font: 500 0.875rem var(--font-mono); cursor: pointer; transition: background 0.2s, color 0.2s; }
-.copy:hover { background: var(--band-fg); color: var(--band-bg); }
 
 .links { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-6); margin-top: var(--s-6); }
 .links a { display: inline-flex; align-items: baseline; gap: 0.625rem; min-height: 44px; align-items: center; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; text-decoration: none; transition: color 0.2s; }
-.links a:hover { color: var(--band-accent); }
 .links .mono { font-size: 0.8125rem; color: var(--band-muted); font-weight: 400; letter-spacing: 0; }
 
 footer { max-width: var(--max-w); margin: var(--s-8) auto 0; padding-top: var(--s-3); border-top: 1px solid color-mix(in srgb, var(--band-fg) 22%, transparent); display: flex; justify-content: space-between; gap: var(--s-2); font-size: 0.8125rem; color: var(--band-muted); }
+
+/* Effetti hover solo dove esiste un vero hover (niente stati "appiccicati" al tocco). */
+@media (hover: hover) {
+  .mail:hover { background-size: 100% 3px; color: var(--band-accent); }
+  .mail:hover .arr { transform: translate(4px, -4px); }
+  .copy:hover { background: var(--band-fg); color: var(--band-bg); }
+  .links a:hover { color: var(--band-accent); }
+}
